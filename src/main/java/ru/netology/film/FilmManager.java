@@ -1,3 +1,4 @@
+package ru.netology.film;
 public class FilmManager {
     private String[] films = new String[0];
     private int limit;
@@ -41,12 +42,21 @@ public class FilmManager {
     }
 
     public void deleteFilmsWithName(String name) {
-        String[] tmp = new String[0];
+        int countFilmsDelete = 0;
+        for (String filmName : films) {
+            if (filmName.equals(name)) {
+                countFilmsDelete++;
+            }
+        }
+        String[] tmp = new String[films.length - countFilmsDelete];
+        int cnt = 0;
         for (int i = 0; i < films.length; i++) {
             if (!(films[i].equals(name))) {
-                String[] reverse = new String[tmp.length + 1];
-                reverse[i] = films[i];
-                tmp = reverse;
+                cnt++;
+                tmp[cnt - 1] = films[i];
+//                String[] reverse = new String[tmp.length + 1];
+//                reverse[reverse.length - 1] = films[i];
+//                tmp = reverse;
 
             }
         }
